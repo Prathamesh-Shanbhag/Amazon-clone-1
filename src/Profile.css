@@ -1,5 +1,5 @@
 .profile {
-  background-color: white;
+  background-image: linear-gradient(#138b82, hsl(197, 91%, 66%), #138bc2);
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -21,36 +21,42 @@
   display: flex;
   flex-direction: column;
   border-radius: 5px;
-  border: 1px solid lightgray;
+  border: 2px solid black;
   padding: 20px;
 }
 
 .profile__container > h1 {
-    font-weight: 500;
-    margin-bottom: 20px;
+  font-weight: 500;
+  margin-bottom: 20px;
 }
 
 .profile__container > form > h5 {
-    margin-bottom: 5px;
+  margin-bottom: 5px;
 }
 
 .profile__container > form > input {
-    height: 30px;
-    margin-bottom: 10px;
-    background-color: white;
-    width: 98%;
+  height: 30px;
+  margin-bottom: 10px;
+  background-color: white;
+  width: 98%;
+  border: 1px solid black;
 }
- .profile__container > p {
-     margin-top: 15px;
-     font-size: 12px;
- }
+.profile__container > p {
+  margin-top: 15px;
+  font-size: 12px;
+}
 
- .profile__submitButton {
-     background: #f0c14b;
-     border-radius: 2px;
-     width: 100%;
-     height: 30px;
-     border: 1px solid;
-     margin-top: 10px;
-     border-color: #a86734 #9c7e31 #846a29;
- }
+.profile__submitButton {
+  background-image: linear-gradient(
+    to right,
+    #138b82,
+    hsl(197, 91%, 66%),
+    #138bc2
+  );
+  border-radius: 2px;
+  width: 100%;
+  height: 30px;
+  border: 1px solid;
+  margin-top: 10px;
+  border-color: #a86734 #9c7e31 #846a29;
+}

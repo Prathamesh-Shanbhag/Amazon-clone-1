@@ -14,13 +14,34 @@ function Profile() {
 
   var user = firebase.auth().currentUser;
 
-  const submit = (e) => {
+  const submitName = (e) => {
     e.preventDefault();
     user.updateProfile({
       displayName: displayName,
+    });
+    if (user?.displayName !== null) {
+      history.push("/");
+    } else {
+      history.push("/Profile");
+    }
+  };
+  const submitPhoto = (e) => {
+    e.preventDefault();
+    user.updateProfile({
       photoURL: photoURL,
     });
-    if (user.displayName !== null) {
+    if (user?.photoURL !== null) {
+      history.push("/");
+    } else {
+      history.push("/Profile");
+    }
+  };
+  const submitEmail = (e) => {
+    e.preventDefault();
+    user.updateProfile({
+      email: email,
+    });
+    if (user?.email !== null) {
       history.push("/");
     } else {
       history.push("/Profile");
@@ -49,6 +70,9 @@ function Profile() {
             value={displayName}
             onChange={(e) => setDisplayName(e.target.value)}
           />
+          <button onClick={submitName} className="profile__submitButton">
+            Apply Changes
+          </button>
           <h5>Email address</h5>
           <input
             placeholder={
@@ -58,6 +82,9 @@ function Profile() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
+          <button onClick={submitEmail} className="profile__submitButton">
+            Apply Changes
+          </button>
           <h5>Profile Pictue link</h5>
           <input
             value={photoURL}
@@ -65,7 +92,7 @@ function Profile() {
             placeholder="Enter your desired picture link"
             type="text"
           />
-          <button onClick={submit} className="profile__submitButton">
+          <button onClick={submitPhoto} className="profile__submitButton">
             Apply Changes
           </button>
         </form>

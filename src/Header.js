@@ -26,9 +26,8 @@ function Header() {
         <input className="header__searchInput" type="text" />
         <SearchIcon className="header__searchIcon" />
       </div>
-      <Link to="/profile">
+      <Link className="header__image" to="/profile">
         <img
-          className="header__image"
           src={
             user
               ? `${
