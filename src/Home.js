@@ -1,7 +1,6 @@
 import React from "react";
 import "./Home.css";
 import Product from "./Product";
-
 export default function Home() {
   return (
     <div className="home">
@@ -20,7 +19,7 @@ export default function Home() {
             price={299.99}
             rating={5}
             image="https://images-na.ssl-images-amazon.com/images/I/71vFBR0SMRL._SX522_.jpg"
-          />
+          />{" "}
           <Product
             id="12321"
             title="

@@ -56,8 +56,12 @@ function Profile() {
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/1024px-Amazon_logo.svg.png"
         />
       </Link>
+
+      <img className="profile__photo" src={user?.photoURL} />
+      <h3 className='profile__name'>Hi, {user?.displayName}</h3>
       <div className="profile__container">
         <h1>Profile Information</h1>
+
         <form>
           <h5>Username</h5>
           <input

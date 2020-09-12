@@ -16,37 +16,28 @@ function Login() {
   const signIn = (e) => {
     e.preventDefault();
 
-    auth
-      .signInWithEmailAndPassword(email, password)
-      .then((auth) => {
-        user.updateProfile({
-          displayName: displayName,
-        });
-        if (user.displayName !== null) {
-          history.push("/");
-        } else {
-          history.push("/Profile");
-        }
-      })
-      .catch((error) => alert(error.message));
+    auth.signInWithEmailAndPassword(email, password).then((auth) => {
+      if (user?.displayName !== null) {
+        history.push("/");
+      } else {
+        history.push("/Profile");
+      }
+    });
   };
   const register = (e) => {
     e.preventDefault();
-    auth
-      .createUserWithEmailAndPassword(email, password)
-      .then((auth) => {
+    auth.createUserWithEmailAndPassword(email, password).then((auth) => {
+      user.updateProfile({
+        displayName: displayName,
+      });
+      console.log(auth);
+      if (auth) {
+        history.push("/Profile");
         user.updateProfile({
           displayName: displayName,
         });
-        console.log(auth);
-        if (auth) {
-          history.push("/Profile");
-          user.updateProfile({
-            displayName: displayName,
-          });
-        }
-      })
-      .catch((error) => alert(error.message));
+      }
+    });
   };
 
   return (
