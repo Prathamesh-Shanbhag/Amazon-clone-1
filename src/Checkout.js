@@ -3,10 +3,30 @@ import "./Checkout.css";
 import Subtotal from "./Subtotal";
 import CheckoutProduct from "./CheckoutProduct";
 import { useStateValue } from "./StateProvider";
+import { motion } from "framer-motion";
 
 function Checkout() {
   const [{ basket, user }, dispatch] = useStateValue();
+  const container = {
+    hidden: { opacity: 1, scale: 0 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        delay: 0.3,
+        when: "beforeChildren",
+        staggerChildren: 0.1,
+      },
+    },
+  };
 
+  const item = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+    },
+  };
   return (
     <div className="checkout">
       <div classNames="checkout__left">
@@ -26,14 +46,25 @@ function Checkout() {
             </strong>
           </h3>
           <h2 className="checkout__title">Your Shopping Basket</h2>
+
           {basket.map((item) => (
-            <CheckoutProduct
-              id={item.id}
-              title={item.title}
-              image={item.image}
-              rating={item.rating}
-              price={item.price}
-            />
+            <motion.div
+              whileHover={{ scale: 1.1, rotate: 0 }}
+              whileTap={{
+                scale: 1.2,
+                rotate: 0,
+                borderRadius: "1%",
+              }}
+            >
+              
+              <CheckoutProduct
+                id={item.id}
+                title={item.title}
+                image={item.image}
+                rating={item.rating}
+                price={item.price}
+              />
+            </motion.div>
           ))}
         </div>
       </div>

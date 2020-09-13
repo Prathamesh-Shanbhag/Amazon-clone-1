@@ -3,6 +3,7 @@ import "./Order.css";
 import moment from "moment";
 import CheckoutProduct from "./CheckoutProduct";
 import CurrencyFormat from "react-currency-format";
+import { motion } from "framer-motion";
 
 function Order({ order }) {
   return (
@@ -13,16 +14,37 @@ function Order({ order }) {
         <strong>Order ID : </strong>
         <small> {order.id}</small>
       </p>
+
       {order.data.basket?.map((item) => (
-        <CheckoutProduct
-          id={item.id}
-          title={item.title}
-          image={item.image}
-          price={item.price}
-          rating={item.rating}
-          hideButton
-        />
+        <motion.div
+          initial={{ scale: .5 }}
+          animate={{ rotate: 360, scale: 1 }}
+          transition={{
+            type: "spring",
+            stiffness: 100,
+            damping: 70,
+          }}
+        >
+          <motion.div
+            whileHover={{ scale: 1.1, rotate: 0 }}
+            whileTap={{
+              scale: 1.2,
+              rotate: 0,
+              borderRadius: "1%",
+            }}
+          >
+            <CheckoutProduct
+              id={item.id}
+              title={item.title}
+              image={item.image}
+              price={item.price}
+              rating={item.rating}
+              hideButton
+            />
+          </motion.div>
+        </motion.div>
       ))}
+
       <CurrencyFormat
         renderText={(value) => (
           <h3 className="order__total">Order Total: {value}</h3>

@@ -50,15 +50,23 @@ function Profile() {
 
   return (
     <div className="profile">
-      <Link to="/">
-        <img
-          className="profile__logo"
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/1024px-Amazon_logo.svg.png"
-        />
-      </Link>
+      <div className="profile__nameContainer">
+        <div>
+          <h2 className="profile__name">
+            <strong>
+              {user
+                ? `${user.displayName !== null ? user.displayName : user.email}`
+                : "Guest"}
+            </strong>
+          </h2>
+        </div>
+      </div>
 
       <img className="profile__photo" src={user?.photoURL} />
-      <h3 className='profile__name'>Hi, {user?.displayName}</h3>
+      {/*<button className="profile__photoButton profile__button">
+        Change profile pic
+              </button>*/}
+
       <div className="profile__container">
         <h1>Profile Information</h1>
 
@@ -67,26 +75,26 @@ function Profile() {
           <input
             placeholder={
               user?.displayName !== null
-                ? `${user?.displayName}`
+                ? `${user?.displayName} (enter a new name to change ur usename)`
                 : `Add your Name`
             }
             type="text"
             value={displayName}
             onChange={(e) => setDisplayName(e.target.value)}
           />
-          <button onClick={submitName} className="profile__submitButton">
+          <button onClick={submitName} className="profile__button">
             Apply Changes
           </button>
           <h5>Email address</h5>
           <input
             placeholder={
-              user?.email !== null ? `${user?.email}` : `add an email`
+              user?.email !== null ? `${user?.email} (change your email)` : `add an email`
             }
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          <button onClick={submitEmail} className="profile__submitButton">
+          <button onClick={submitEmail} className="profile__button">
             Apply Changes
           </button>
           <h5>Profile Pictue link</h5>
@@ -96,7 +104,7 @@ function Profile() {
             placeholder="Enter your desired picture link"
             type="text"
           />
-          <button onClick={submitPhoto} className="profile__submitButton">
+          <button onClick={submitPhoto} className="profile__button">
             Apply Changes
           </button>
         </form>

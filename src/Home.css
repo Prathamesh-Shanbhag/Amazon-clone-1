@@ -6,7 +6,10 @@
   max-width: 1200px;
   background-image: linear-gradient(#138b82, hsl(197, 91%, 66%), #138bc2);
 }
-
+.home__header {
+  align-items: center;
+  display: flex;
+}
 .home__row {
   display: flex;
   z-index: 1;
@@ -18,4 +21,14 @@
   margin-bottom: -150px;
   z-index: -1;
   mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+}
+
+.deals {
+  align-items: center;
+  display: flex;
+  display: flex;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1200px;
 }
